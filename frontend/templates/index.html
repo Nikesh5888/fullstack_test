@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Search</title>
+
+    <!-- Tailwind CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- HTMX CDN -->
+    <script src="https://unpkg.com/htmx.org@1.6.1"></script>
+</head>
+
+<body class="bg-gray-50">
+    <!-- Main container -->
+    <div class="container mx-auto py-8">
+        <!-- Header -->
+        <header class="mb-8">
+            <h1 class="text-3xl font-bold text-center">Flight Search</h1>
+        </header>
+
+        <!-- Flight Search Form -->
+        <section class="bg-white shadow-lg p-6 rounded-lg">
+            <form hx-get="/flights" hx-target="#flights-list" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                    <label for="source" class="block text-sm font-medium text-gray-700">From</label>
+                    <input type="text" id="source" name="source" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Enter Source">
+                </div>
+
+                <div>
+                    <label for="sink" class="block text-sm font-medium text-gray-700">To</label>
+                    <input type="text" id="sink" name="sink" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Enter Destination">
+                </div>
+
+                <div>
+                    <label for="departure_date" class="block text-sm font-medium text-gray-700">Departure Date</label>
+                    <input type="date" id="departure_date" name="departure_date" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                </div>
+
+                <div>
+                    <label for="return_date" class="block text-sm font-medium text-gray-700">Return Date</label>
+                    <input type="date" id="return_date" name="return_date" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                </div>
+
+                <div class="md:col-span-2">
+                    <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">Search Flights</button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Flight Results Section -->
+        <section id="flight-results" class="mt-8">
+            <!-- Results will be populated here dynamically by HTMX -->
+        </section>
+
+        <div id="flight-results" class="mt-8 bg-white shadow-md rounded-lg p-6">
+            <div class="text-xl font-bold mb-4">Flight Results</div>
+        
+            <div id="flights-list">
+                <!-- Flight results will be loaded here dynamically by HTMX -->
+                 
+            </div>
+            
+            <div id="flight-results" class="mt-8 bg-white shadow-md rounded-lg p-6">
+                <div class="text-xl font-bold mb-4">Flight Results</div>
+                <div id="flights-list">
+                    <!-- Flight results will be loaded here dynamically by HTMX -->
+                    <p>No flights found. Please submit your search.</p>
+                </div>
+            </div>
+            
+
+        </div>
+        
+    </div>
+
+    <!-- Optional JS for interactions -->
+    <script>
+        // Additional JavaScript for client-side interactions (if necessary)
+    </script>
+</body>
+
+</html>
